@@ -9,7 +9,11 @@ Probando por primera vez VSCode...
 ** Segunda modificación.. **
 
 Nuevamente, introducimos nuevos cambios reflejados
-**************************************************
+****************************************************
 ** Tercera modificación.. **
 
 Nuevamente, introducimos nuevos cambios reflejados
+****************************************************
+** Cuarta modificación.. **
+
+![](Ejercicio2-img1.gif)
