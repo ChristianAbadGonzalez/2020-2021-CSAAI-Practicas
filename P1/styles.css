@@ -11,18 +11,60 @@ body{
     font-size: 40px;
     text-align: center;
 }
+  
+#Tabla--General{
+    width: 100%;
+}
+/*
 #Filas--Fotografia{
 
 }
 #Celdas--Fotografia{
 
 }
+*/
 #Celdas--SobreMi{
+    border: 3px solid white; 
+    margin: 2.5%;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+#SobreMi{
+    border: 3px solid white; 
+    margin: 2.5%;
+    background-color: black;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+#Celdas--ExperienciaPersonal{
+    border: 3px solid white; 
+    margin: 2.5%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 50%;
+}
+#ExperienciaPersonal{
+    border: 3px solid white; 
+    margin: 2.5%;
+    background-color: black;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+#Titulo--DatosPersonales{
+    border: 3px solid white; 
+    margin: 2.5%;
+    color: white;
+    text-align: center;
+}
+/* #Filas--DatosPersonales{
 
 }
-#Filas--DatosPersonales{
+*/
 
-}
 #Celdas--DatosPersonales{
     border: 3px solid white;
     background-color: black; 
@@ -30,14 +72,22 @@ body{
     width: 40%;
 }
 #Emojis{
-    float:left;margin:1px;
+    float:left;
+    margin:1px;
     width: 20px;
+}
+#FormacionAcademica{
+    border: 3px solid white;
+    background-color: black;
+    text-align: center; 
+    color: white;
+    font-size: 20px;
 }
 #Tabla--FormacionAcademica{
     color: white;
 }
 #Filas--FormacionAcademica{
-
+    width: 100%;
 }
 #Celdas--FormacionAcademica{
     border: 3px solid white;
@@ -45,9 +95,6 @@ body{
     width: 100%; 
     text-align: left;
     color: white;
-}
-#Encabezados--Logos{
-
 }
 #ChristianAbadDJ--BlancoNegro{
     width: 40%;
