@@ -66,6 +66,7 @@ body{
     background-color: black; 
     color: white;
     width: 40%;
+    font-size: medium;
 }
 #Emojis{
     float:left;
@@ -115,6 +116,42 @@ body{
 #Progresion{
     border: 3px solid white; 
     padding-left: 1%;
+    font-size: medium;
+}
+#FAA{
+    text-align: center;
+    border: 3px solid white; 
+    margin: 2.5%;
+    padding: 2.5%;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    width: 50%;
+}
+#TFAA{
+    text-align: center;
+    border: 3px solid white; 
+    margin: 2.5%;
+    padding: 2.5%;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+#TablaDatos{
+    border: 3px solid white;
+    background-color: black; 
+    width: 40%; 
+    text-align: left;
+    color: white;
+}
+#TituloDatosInteres{
+    text-align: center;
+    border: 3px solid white; 
+    margin: 2.5%;
+    padding: 2.5%;
+    color: white;
+    text-align: center;
+    font-size: 20px;
 }
 #Fotografia{
     border: 3px solid black;
