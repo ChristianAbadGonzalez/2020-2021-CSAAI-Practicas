@@ -4,5 +4,5 @@
 const test = document.getElementById('test')
 
 /* Mostrar en la consola el contenido del párrafo (¡Propiedad "innerHTML"!) */
-console.log("Párrafo test leido. Dice:");
-console.log(test.innerHTML);
+console.log("Párrafo test leido. Dice:")
+console.log(test.innerHTML)
