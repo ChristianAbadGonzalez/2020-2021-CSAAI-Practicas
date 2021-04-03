@@ -6,6 +6,11 @@ igual = document.getElementById("igual")
 clear = document.getElementById("clear")
 clear_all = document.getElementById("clear_all")
 punto = document.getElementById("punto")
+parentesis_izq = document.getElementById("parentesis_izq")
+parentesis_dcha = document.getElementById("parentesis_dcha")
+porcentaje = document.getElementById("porcentaje")
+exponente = document.getElementById("exponente")
+numero_pi = document.getElementById("numero_pi")
 
 /* Maquina de Estados para la calculadora */
 const ESTADO = {
@@ -13,7 +18,7 @@ const ESTADO = {
     OP1: 1,
     OPERATION: 2,
     OP2: 3,
-    Resultado: 4,
+    RESULT: 4,
 }
 
 /* La variable 'ESTADO', de la calculadora; al comenzar debe estar en el estado inicial 'INIT' */
@@ -21,6 +26,7 @@ let estado = ESTADO.INIT;
 
 /* El boton/tecla 'ANS' de la calculadora, al inicializar la calculadora, está debe comenzar en el valor 0 */
 let ANS = "0";
+let ans = document.getElementById("ans");
 
 //-- Crea un array con todos los elementos de la clase digito -> Busqueda en el archivo HTML.
 let digitos = document.getElementsByClassName("digito"); 
@@ -28,12 +34,12 @@ let digitos = document.getElementsByClassName("digito");
 //-- Crea un array con todos los elementos de la clase operacion -> Busqueda en el archivo HTML.
 let operacion = document.getElementsByClassName("operacion");
 
-//-- Recorro el array de los digitos, son del 0 al 9
+/* Estamos delante de un arrow-function. Se recorre el array de los digitos [0 - 9] */
 for (i=0; i<digitos.length; i++){
-    digitos[i].onclick = (ev)=> {
+    digitos[i].onclick = (ev) => {
       digito(ev.target.value);
     }
-  }
+}
 
 /* Función de retrollamada de los digitos */
 function digito(botons){
@@ -44,25 +50,16 @@ function digito(botons){
     if(estado == ESTADO.INIT) {
         display.innerHTML = botons;
         estado = ESTADO.OP1;
-        console.log(estado,"operador 1");
+        console.log(estado,"OP1");
       }else if (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION){
         display.innerHTML += botons;
         if (estado == ESTADO.OPERATION) {
             estado = ESTADO.OP2;
-            console.log(estado,"segundo operando");
-            ESTADO.Resultado = false;
+            console.log(estado,"OP2");
         }
+      }else{
+        /* Realizar el calculo de la operacion-... */
       }
-}
-
-/* Establecer la misma funcion de retrollamada para todos los botones de tipo dígito */
-for (let boton of digitos){
-
-    /* Se ejecuta cuando se pulsa un botón que es un dígito */
-    boton.onclick = (ev) => {
-        display.innerHTML += ev.target.value;
-        console.log("DIGITO!!");
-    }
 }
 
 /* Establecer la misma funcion de retrollamada para todos los botones de tipo dígito */
@@ -72,36 +69,39 @@ for (let operando of operacion){
     operando.onclick = (ev) => {
         display.innerHTML += ev.target.value;
         console.log("OPERADOR!!");
-    }
-    
+    } 
 }
 
 /* Funciones de retrollamada de los botones... */
 /* Cada vez que se pulse un boton se actua sobre la cadena, */
 /* añadiendo digito 1 + operador + digito 2 + evaluacion de la operacion. */
 
-//-- Evaluo coma para no introducir dos seguidas
+/*  Evaluar la expresion de la coma  */
 punto.onclick = (ev) => {
-    if(ESTADO.Resultado){
-      console.log("Error al poner dos comas seguidas");
+    if(estado != ESTADO.OP1 && estado != ESTADO.OP2){
+      console.log("Error de ejecución... No es posible poner la coma.");
     }else{
       display.innerHTML += ev.target.value;
-      ESTADO.Resultado= true;
-      console.log(estado,"No hay error en la coma");
+      console.log(estado,"Ejecucción correcta, adición de la coma.");
     }
   }
 
-/* Evaluar la expresión */
+/* Evaluar la expresión igual. */
 igual.onclick = () => {
-    if(estado == ESTADO.OP1 ||  estado == ESTADO.OP2){
+    if(estado == ESTADO.OP1 || estado == ESTADO.OP2){
         display.innerHTML = eval(display.innerHTML);
-        estado = ESTADO.OP1;
-        ESTADO.Resultado = true;
+        ANS = display.innerHTML;
+        estado = ESTADO.INIT;
         console.log(estado,"igual");
     }
-  }
+}
 
-/* Borramos el ultimo elemento que hemos pulsado en la Calculadora. */
+/* Evaluar la expresion ANS. */
+ans.onclick = () => {
+  display.innerHTML += ANS;
+}
+
+/* Evaluamos la expresion para borrar el ultimo elemento. */
 clear.onclick = () => {
     if (display.innerHTML.length == 1) {
         display.innerHTML = "";
@@ -114,21 +114,38 @@ clear.onclick = () => {
       }
     }
 
-/* Ponemos toda la calculadora en Estado Inicial */
+/* Evaluar la expresión para volver a poner la Calculadora en ESTADO INICIAL. */
 clear_all.onclick = () => {
     display.innerHTML = " ";
     estado = ESTADO.OP1;
 }
 
-/* Gestion de la operacion de la raiz cuadrada */
+/* Evaluar la expresión Raiz Cuadrada. */
 raiz_cuadrada.onclick = () => {
     display.innerHTML = Math.sqrt(display.innerHTML);
-  }
-  
-exponente.onclick = () => {
-    display.innerHTML = Math.pow(display.innerHTML, 2);
 }
 
+/* Evaluar la espresión Exponente. */
+exponente.onclick = () => {
+  display.innerHTML += "**";
+}
+
+/* Evaluar la expresión Número PI. */
 numero_pi.onclick = () => {
-    display.innerHTML = Math.PI(display.innerHTML, 3.141592654);
+  display.innerHTML += Math.PI;
+}
+
+/* Evaluar las expresiones de los Parentesis */
+parentesis_izq.onclick = () => {
+  display.innerHTML += "("
+}
+
+/* Evaluar las expresiones de los Parentesis */
+parentesis_dcha.onclick = () => {
+  display.innerHTML += ")"
+}
+
+/* Evaluar las expresiones de los Parentesis */
+porcentaje.onclick = () => {
+  display.innerHTML += "*0.01"
 }
