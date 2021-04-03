@@ -47,19 +47,17 @@ function digito(botons){
     /* Se ha recibido un dígito. Según en qué estado se encuentre la calculadora, se hará una cosa u otra... */
 
     /* Si es el primer dígito, no lo añadimos, sino que lo mostramos directamente en el display */
-    if(estado == ESTADO.INIT) {
-        display.innerHTML = botons;
-        estado = ESTADO.OP1;
-        console.log(estado,"OP1");
-      }else if (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION){
-        display.innerHTML += botons;
-        if (estado == ESTADO.OPERATION) {
-            estado = ESTADO.OP2;
-            console.log(estado,"OP2");
-        }
-      }else{
-        /* Realizar el calculo de la operacion-... */
+  if(estado == ESTADO.INIT) {
+      display.innerHTML = botons;
+      estado = ESTADO.OP1;
+      console.log(estado,"OP1");
+  }else if (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION){
+      display.innerHTML += botons;
+      if (estado == ESTADO.OPERATION) {
+          estado = ESTADO.OP2;
+          console.log(estado,"OP2");
       }
+  }
 }
 
 /* Establecer la misma funcion de retrollamada para todos los botones de tipo dígito */
