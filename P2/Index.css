@@ -1,0 +1,124 @@
+.Calculadora{
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: blue;
+    width: 400px;
+    height: 400px;
+    border-radius: 25px;
+}
+ 
+.digito{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+}
+
+.operacion{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+}
+
+#display{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+    background-color: grey;
+    width: 300px;
+    height: 100px;
+    line-height: 75px;
+    border-radius: 25px;
+}
+
+#porcentaje{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#parentesis_izq{
+    display: block;
+    width: 60px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#parentesis_dcha{
+    display: block;
+    width: 60px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#raiz_cuadrada{
+    display: block;
+    width: 70px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#exponente{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#clear{
+    display: block;
+    width: 80px;
+    height: 30px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#clear_all{
+    display: block;
+    width: 80px;
+    height: 30px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#punto{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+#numero_pi{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#ans{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#igual{
+    display: block;
+    width: 60px;
+    height: 30px;
+    font-size: 25px;
+    border-radius: 25px;
+}
