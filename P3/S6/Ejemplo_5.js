@@ -20,9 +20,9 @@ ctx.beginPath();
     ctx.fillStyle = 'yellow';
 
     /* Dibujar el trazo */
-    ctx.strokeStyle();
+    ctx.stroke();
 
     /* Dibujar el relleno */
-    ctx.fillStyle();
+    ctx.fill();
 
 ctx.closePath();
