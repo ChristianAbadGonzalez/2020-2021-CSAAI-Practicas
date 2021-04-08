@@ -1,16 +1,16 @@
 console.log("Ejecutando JavaScript de la Práctica 2 de CSAAI...");
 
 /* Elementos de la interfaz de la calculadora */
-display = document.getElementById("display")
-igual = document.getElementById("igual")
-clear = document.getElementById("clear")
-clear_all = document.getElementById("clear_all")
-punto = document.getElementById("punto")
-parentesis_izq = document.getElementById("parentesis_izq")
-parentesis_dcha = document.getElementById("parentesis_dcha")
-porcentaje = document.getElementById("porcentaje")
-exponente = document.getElementById("exponente")
-numero_pi = document.getElementById("numero_pi")
+let display = document.getElementById("display")
+let igual = document.getElementById("igual")
+let clear = document.getElementById("clear")
+let clear_all = document.getElementById("clear_all")
+let punto = document.getElementById("punto")
+let parentesis_izq = document.getElementById("parentesis_izq")
+let parentesis_dcha = document.getElementById("parentesis_dcha")
+let porcentaje = document.getElementById("porcentaje")
+let exponente = document.getElementById("exponente")
+let numero_pi = document.getElementById("numero_pi")
 
 /* Maquina de Estados para la calculadora */
 const ESTADO = {
@@ -56,6 +56,8 @@ function digito(botons){
       if (estado == ESTADO.OPERATION) {
           estado = ESTADO.OP2;
           console.log(estado,"OP2");
+      }else if (estado == ESTADO.OP1){
+          console.log(estado, "OP1");
       }
   }
 }
@@ -64,9 +66,28 @@ function digito(botons){
 for (let operando of operacion){
 
     /* Se ejecuta cuado se pulsa un botón que es un operador */
-    operando.onclick = (ev) => {
+      operando.onclick = (ev) => {
+        console.log(estado);
+        switch(estado) { // Comprobamos en qué estado nos encontramos
+          case ESTADO.INIT:
+              return; // Si no hemos escrito nada no podemos empezar una operacion
+          case ESTADO.OP1:
+              estado = ESTADO.OPERATION;
+              break; // Podemos escribir el operando
+          case ESTADO.OPERATION:
+              return; // Si ya hemos escrito un operando no podemos escribir otro
+          case ESTADO.OP2:
+              if (ev.target.value != "=") {
+                  return; // Si no es el operando = no podemos escribirlo
+              } else {
+                  estado = ESTADO.RESULT;
+                  break;
+              }
+          default:
+              // Si alguien introdujese un estado nuevo, no pasaría nada
+              return;
+        }
         display.innerHTML += ev.target.value;
-        console.log("OPERADOR!!");
     } 
 }
 
@@ -106,8 +127,29 @@ clear.onclick = () => {
         estado = ESTADO.INIT
       } else {
         display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
-        if (estado == ESTADO.OPERATION){
-          estado = ESTADO.OP1;
+        switch(display.innerHTML[display.innerHTML.length-1]){
+          case "0":
+          case "1":
+          case "2":
+          case "3":
+          case "4":
+          case "5":
+          case "6":
+          case "7":
+          case "8":
+          case "9":
+            if (estado == ESTADO.OPERATION){
+              estado = ESTADO.OP1;
+            }else if (estado == ESTADO.RESULT){
+              estado = ESTADO.OP2;
+            }
+            break;
+          default:
+            if (estado == ESTADO.OP2){
+              estado = ESTADO.OPERATION;
+            }else if (estado = ESTADO.OP1){
+              estado = ESTADO.INIT;
+            }
         }
       }
     }
