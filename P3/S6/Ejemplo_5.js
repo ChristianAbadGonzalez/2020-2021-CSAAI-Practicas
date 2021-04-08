@@ -17,12 +17,12 @@ ctx.beginPath();
     ctx.arc(100, 50, 10, 0, 2 * Math.PI);
     ctx.strokeStyle = 'blue';
     ctx.lineWidth = 3;
-    ctx.fillStyle = 'yellow':
+    ctx.fillStyle = 'yellow';
 
     /* Dibujar el trazo */
     ctx.strokeStyle();
 
     /* Dibujar el relleno */
     ctx.fillStyle();
-    
+
 ctx.closePath();
