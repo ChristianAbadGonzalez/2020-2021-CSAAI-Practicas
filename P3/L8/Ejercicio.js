@@ -2,8 +2,12 @@ console.log("Ejecutando JavaScript");
 
 const canvas = document.getElementById("canvas");
 
+/* Manejador de eventos */
+document.addEventListener("keydown", pulsar, false);
+document.addEventListener("keyup", soltar, false);
+
 /* Definir el tamaño del canvas */
-canvas.width = 200;
+canvas.width = 300;
 canvas.height = 400;
 
 /* Obtener el contesto del canvas */
@@ -28,8 +32,8 @@ let ball = {
     "x": canvas.width/2,
     "y": canvas.height/2,
     "r": 2,
-    "dx": 2,
-    "dy": 2
+    "dx": 0,
+    "dy": 0
 };
 
 let paddle = {
@@ -38,7 +42,32 @@ let paddle = {
     "x": canvas.width/2,
     "y": canvas.height - 10,
     "dx": 0
-}; 
+};
+
+let start_button = document.getElementById("start");
+
+start_button.onclick = () => {
+    ball.dx = 2;
+    ball.dy = -2;
+} 
+
+let button_left = document.getElementById("button_left");
+
+button_left.onmousedown = () => {
+    paddle.dx = -2;
+}
+button_left.onmouseup = () => {
+    paddle.dx = 0;
+}
+
+let button_right = document.getElementById("button_right");
+
+button_right.onmousedown = () => {
+    paddle.dx = 2;
+}
+button_right.onmouseup = () => {
+    paddle.dx = 0;
+}
 
 /* Array de elementos */
 for (let i = 0; i < filas; i++){
@@ -75,7 +104,7 @@ function raqueta(){
         ctx.rect(paddle["x"], paddle["y"], paddle.width, paddle.height);
 
         /* Dibujar */
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'white';
 
         /* Rellenar */
         ctx.fill();
@@ -159,11 +188,19 @@ function colisiones(){
 function colisiones2(){
     if (ball.x + ball.dx + ball.r <= 0 || ball.x + ball.dx + ball.r >= canvas.width){
         ball.dx *= (-1);
-    }else if (ball.y + ball.dy + ball.r <= 0 || ball.y + ball.dy + ball.r >= canvas.height){
+    }else if (ball.y + ball.dy + ball.r <= 0){
         ball.dy *= (-1);
+    }else if (ball.y + ball.dy + ball.r >= canvas.height){
+        ball.dx = 0;
+        ball.dy = 0;
+        ball.x = canvas.width/2;
+        ball.y = canvas.height/2;
+        /* lives -= 1; */
+        lives = lives -1;
     }
     ball.x += ball.dx;
     ball.y += ball.dy;
+
 }
 
 function upgrade(){
@@ -186,10 +223,15 @@ function update(){
 function pulsar(e){
     /* Tecla flecha derecha */
     if (e.keyCode == 39){
-        paddle.dx = 10; 
+        paddle.dx = 5; 
     /* Tecla flecha izquierda */       
     }else if (e.keyCode == 37){
-        paddle.dx = -10;
+        paddle.dx = -5;
+    }else if (e.keyCode == 32){
+        ball.dx = 2;
+        ball.dy = -2;
+        ball.x = canvas.width/2;
+        ball.y = canvas.height/2;
     }
 }
 
@@ -198,8 +240,5 @@ function soltar(e){
         paddle.dx = 0;
     }
 }
-/* Manejador de eventos */
-document.addEventListener("keydown", pulsar, false);
-document.addEventListener("keyup", soltar, false);
 
 update();
