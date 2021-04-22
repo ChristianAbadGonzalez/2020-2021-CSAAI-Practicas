@@ -37,8 +37,8 @@ let ball = {
 };
 
 let paddle = {
-    "width": 20,
-    "height": 10,
+    "width": 25,
+    "height": 5,
     "x": canvas.width/2,
     "y": canvas.height - 10,
     "dx": 0
@@ -186,7 +186,7 @@ function colisiones(){
 }
 
 function colisiones2(){
-    if (ball.x + ball.dx + ball.r <= 0 || ball.x + ball.dx + ball.r >= canvas.width){
+    if (ball.x + ball.dx + ball.r <= 50 || ball.x + ball.dx + ball.r >= 250){
         ball.dx *= (-1);
     }else if (ball.y + ball.dy + ball.r <= 0){
         ball.dy *= (-1);
@@ -197,6 +197,10 @@ function colisiones2(){
         ball.y = canvas.height/2;
         /* lives -= 1; */
         lives = lives -1;
+    }else if(paddle.y <= ball.y + ball.r){
+        if (paddle.x <= ball.x + ball.r && paddle.width + paddle.x >= ball.x + ball.r){
+            ball.dy *= (-1);
+        }
     }
     ball.x += ball.dx;
     ball.y += ball.dy;
