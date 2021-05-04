@@ -206,6 +206,10 @@ function colisiones2(){
         /* lives -= 1; */
         lives = lives -1;
         sonido_gol.play();
+        if (lives == 0) {
+            alert("GAME-OVER!");
+            location.reload();
+        }
     }else if(paddle.y <= ball.y + ball.r){
         if (paddle.x <= ball.x + ball.r && paddle.width + paddle.x >= ball.x + ball.r){
             ball.dy *= (-1);
@@ -214,7 +218,6 @@ function colisiones2(){
     }
     ball.x += ball.dx;
     ball.y += ball.dy;
-
 }
 
 function upgrade(){
