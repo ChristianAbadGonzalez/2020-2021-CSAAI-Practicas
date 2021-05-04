@@ -28,6 +28,12 @@ let ancho_ladrillo = 21.75;
 
 let alto_ladrillo = 5;
 
+let sonido_rebote =  new Audio("pong-rebote.mp3");
+
+let sonido_raqueta = new Audio("pong-raqueta.mp3");
+
+let sonido_gol = new Audio("pong-tanto.mp3");
+
 let ball = {
     "x": canvas.width/2,
     "y": canvas.height/2,
@@ -188,8 +194,10 @@ function colisiones(){
 function colisiones2(){
     if (ball.x + ball.dx + ball.r <= 50 || ball.x + ball.dx + ball.r >= 250){
         ball.dx *= (-1);
+        sonido_rebote.play();
     }else if (ball.y + ball.dy + ball.r <= 0){
         ball.dy *= (-1);
+        sonido_rebote.play();
     }else if (ball.y + ball.dy + ball.r >= canvas.height){
         ball.dx = 0;
         ball.dy = 0;
@@ -197,9 +205,11 @@ function colisiones2(){
         ball.y = canvas.height/2;
         /* lives -= 1; */
         lives = lives -1;
+        sonido_gol.play();
     }else if(paddle.y <= ball.y + ball.r){
         if (paddle.x <= ball.x + ball.r && paddle.width + paddle.x >= ball.x + ball.r){
             ball.dy *= (-1);
+            sonido_raqueta.play();
         }
     }
     ball.x += ball.dx;
