@@ -24,9 +24,11 @@ let lives = 3;
 
 let score = 0;
 
-let ancho_ladrillo = 21.75;
+let maxPuntuacion = filas*columnas;
 
-let alto_ladrillo = 5;
+let ancho_ladrillo = 20;
+
+let alto_ladrillo = 10;
 
 let sonido_rebote =  new Audio("pong-rebote.mp3");
 
@@ -43,7 +45,7 @@ let ball = {
 };
 
 let paddle = {
-    "width": 25,
+    "width": 30,
     "height": 5,
     "x": canvas.width/2,
     "y": canvas.height - 10,
@@ -79,10 +81,10 @@ button_right.onmouseup = () => {
 for (let i = 0; i < filas; i++){
     for (let j = 0; j < columnas; j++){
         let ladrillo = {
-            "width": 10,
-            "height": 5,
-            "x": 52 + ancho_ladrillo*j,
-            "y": 52 + alto_ladrillo*i,
+            "width": 20,
+            "height": 10,
+            "x": 40 + (ancho_ladrillo + 5)*j,
+            "y": 50 + (alto_ladrillo + 5)*i,
             "candraw": true
         }
         ladrillos.push(ladrillo);
@@ -114,9 +116,6 @@ function raqueta(){
 
         /* Rellenar */
         ctx.fill();
-
-        /* Dibujar el trazo */
-        ctx.stroke();
     ctx.closePath();
 }
 
@@ -136,9 +135,6 @@ function bloques(){
 
             /* Rellenar */
             ctx.fill();
-
-            /* Dibujar el trazo */
-            ctx.stroke();
         }
     }
 
@@ -164,27 +160,23 @@ function bola(){
         ctx.fillStyle = 'white';
         
         ctx.fill();
-        
-        ctx.stroke();
     ctx.closePath();
 }
 
 function muros(){
     ctx.beginPath();
-        ctx.rect(48, 0, 2, canvas.height);
+        ctx.rect(23, 0, 2, canvas.height);
         
-        ctx.rect(250, 0, 2, canvas.height);
+        ctx.rect(275, 0, 2, canvas.height);
         
         ctx.fillStyle = 'white';
         
         ctx.fill();
-        
-        ctx.stroke();
     ctx.closePath();
 }
 
 function colisiones(){
-    if (paddle.x + paddle.dx <= 50 || paddle.x + paddle.dx + paddle.width >= 250){
+    if (paddle.x + paddle.dx <= 25 || paddle.x + paddle.dx + paddle.width >= 275){
         return;
     }else{
         paddle.x += paddle.dx;
@@ -192,7 +184,7 @@ function colisiones(){
 }
 
 function colisiones2(){
-    if (ball.x + ball.dx + ball.r <= 50 || ball.x + ball.dx + ball.r >= 250){
+    if (ball.x + ball.dx + ball.r <= 25 || ball.x + ball.dx + ball.r >= 275){
         ball.dx *= (-1);
         sonido_rebote.play();
     }else if (ball.y + ball.dy + ball.r <= 0){
@@ -216,8 +208,21 @@ function colisiones2(){
             sonido_raqueta.play();
         }
     }
+    for (let i = 0; i < ladrillos.length; i++) {       
+        if (ladrillos[i].candraw){
+            if (ball.y - ball.r + ball.dy <= ladrillos[i].y + ladrillos[i].height) { //-- Misma altura
+                if (ball.x - ball.r + ball.dx >= ladrillos[i].x && ball.x + ball.r + ball.dx <= ladrillos[i].x + ladrillos[i].width) {
+                    ball.dy *= (-1); ladrillos[i].candraw = false; score++;
+                }
+            }
+        }
+    }
     ball.x += ball.dx;
     ball.y += ball.dy;
+    if (score === maxPuntuacion) {
+        alert('You win!');
+        location.reload();
+    }
 }
 
 function upgrade(){
@@ -245,6 +250,9 @@ function pulsar(e){
     }else if (e.keyCode == 37){
         paddle.dx = -5;
     }else if (e.keyCode == 32){
+        if (ball.dx != 0 && ball.dy != 0){
+            return;
+        }
         ball.dx = 2;
         ball.dy = -2;
         ball.x = canvas.width/2;
