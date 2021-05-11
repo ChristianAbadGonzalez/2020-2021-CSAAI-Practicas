@@ -23,7 +23,7 @@ img.onload = function () {
 
     /* Obtener la imafen del canvas en pixeles. */
     
-    let imgData = ctx.getImagenData(0, 0, canvas.width, canvas.height);
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     /* Obtener el array con todos los pixeles. */
     
