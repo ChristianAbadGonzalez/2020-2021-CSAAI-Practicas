@@ -23,7 +23,7 @@ img.onload = function () {
 
     /* Obtener la imafen del canvas en pixeles. */
     
-    let imgData = ctx.getImagenData(0, 0, canvas.width, canvas.height);
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     /* Obtener el array con todos los pixeles. */
     
@@ -43,10 +43,16 @@ img.onload = function () {
     /* data[4*i + 1] es el canal verde */
     /* data[4*i + 2] es el canal azul */
     /* data[4*i + 3] es el canal de transparencia */
+    
+    /* Obtener el numero de pixel a partir de su posición */
+    let i = 200 + 50*canvas.width;
 
-    data[4*i] = 255;    /* Canal Rojo */
-    data[4*i + 1] = 0;  /* Canal Verde */
-    data[4*i + 2] = 0;  /* Canal Azul */
+    /* Pixel Rojo: cuando el canal rojo esta a tope. El reto de coloes a 0. */
+    /* La transparencia no se modifica. */
+    
+    data[i*4] = 255;    /* Canal Rojo */
+    data[i*4 + 1] = 0;  /* Canal Verde */
+    data[i*4 + 2] = 0;  /* Canal Azul */
 
     /* Poner la imagen modificada en el canvas */
 
