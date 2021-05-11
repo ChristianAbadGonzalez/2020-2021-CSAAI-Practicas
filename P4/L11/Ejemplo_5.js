@@ -33,7 +33,7 @@ img.onload = function () {
 
 /* Función de retrollamada del deslizador. */
 
-deslizador.onimput = () => {
+deslizador.oninput = () => {
 
     /* Mostrar el nuevo valor del deslizador */
     range_value.innerHTML = deslizador.value;
