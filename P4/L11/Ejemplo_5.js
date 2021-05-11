@@ -57,9 +57,8 @@ deslizador.onimput = () => {
     /* Filtrar la imagen según el nuevo umbral. */
 
     for (let i = 0; i < data.length; i += 4){
-        if (data[i] > umbral){
-            data[i] = umbral
-        }
+        if (data[i] > umbral)
+            data[i] = umbral;
     }
 
     /* Poner la imagen modificada en el canvas. */
