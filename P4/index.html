@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <title>Práctica 4 -- Filtrado de Imagenes</title>
+</head>
+<body>
+    <div>
+        <img id="logo_principal" src="logo_pioneer.png" alt="Logo de Pioneer">
+    </div>
+    <hr>
+    <table>
+        <tr>
+            <td>
+                <h2 id="titulo">Pioneer CDJ 2000NSX2</h2>
+                <button id="sel1">Seleccionar Imagen Original 1</button>
+                <br>
+                <br>
+                <a href="https://www.profesionaldj.es/pioneer-dj-cdj-2000nxs2" id="url">Pioneer CDJ 2000NSX2</a>
+                <p id="special">
+                    <img id="imagen1" src="cdj900nsx2.jpg" alt="CDJ-2000NSX2">
+                </p>
+            </td>
+            <td>
+                <h2 id="titulo">Pioneer DJM 900NSX2</h2>
+                <button id="sel2">Seleccionar Imagen Original 2</button>
+                <br>
+                <br>
+                <a href="https://www.profesionaldj.es/pioneer-dj-djm-900nxs2" id="url">Pioneer DJM 900NSX2</a>
+                <p id="special">
+                    <img id="imagen2" src="pioneer-dj-djm-900nxs2.jpg" alt="DJM 900NSX2">
+                </p>
+            </td>
+            <td>
+                <h2 id="titulo3">Pioneer NSX2</h2>
+                <button id="sel3">Seleccionar Imagen Original 3</button>
+                <p id="special">
+                    <img id="imagen3" src="cdj-2000nxs2-djm-900nxs2-set.png-2.jpeg" alt="Pioneer NSX2">
+                </p>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <hr>
+    <table>
+        <tr>
+            <td>
+                <canvas id="canvas"></canvas>
+                <br>
+                <br>
+                <button id="color">COLORES</button>
+                <button id="grises">E.GRISES</button>
+                <button id="espejo">ESPEJO</button>
+                <br>
+                <br>
+                <button id="invertir">INVERTIR</button>
+                <button id="negativo">NEGATIVO</button>
+                <button id="vintage">VINTAGE</button>
+                <br>
+                <div id="controls">
+                    <p><b>Rojo</b></p>
+                    <input type="range" id="rojo" min="0" max="255" value="255">
+                    <p id="range_rojo">255</p>
+                    <p><b>Verde</b></p>
+                    <input type="range" id="verde" min="0" max="255" value="255">
+                    <p id="range_verde">255</p>
+                    <p><b>Azul</b></p>
+                    <input type="range" id="azul" min="0" max="255" value="255">
+                    <p id="range_azul">255</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
