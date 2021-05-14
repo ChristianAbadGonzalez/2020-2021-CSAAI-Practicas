@@ -10,13 +10,9 @@ const imagen1 =  document.getElementById("imagen1");
 
 const imagen2 =  document.getElementById("imagen2");
 
-const imagen3 =  document.getElementById("imagen3");
-
 const button1 = document.getElementById("sel1");
 
 const button2 = document.getElementById("sel2");
-
-const button3 = document.getElementById("sel3");
 
 const controls = document.getElementById("controls");
 
@@ -90,22 +86,6 @@ button2.onclick = function() {
     console.log("Imagen lista..."); 
 }
 
-/* Función de retrollamada del boton 3 */
-
-button3.onclick = function() {
-    
-    /* Se establece como tamaño del canvas, el mismo que el de la imagen original. */
-    canvas.width = imagen3.width;
-    canvas.height = imagen3.height;
-
-    /* Situar la imgen original en el canvas. No se han hecho manipulaciones todavia. */
-
-    ctx.drawImage(imagen3, 0, 0, imagen3.width, imagen3.height);
-
-    img = imagen3;
-
-    console.log("Imagen lista..."); 
-}
 
 function colores(){
 
