@@ -109,6 +109,8 @@ button3.onclick = function() {
 
 function colores(){
 
+    H_Deslizadores();
+
     if (sg){
         return;
     }
@@ -183,6 +185,9 @@ color.onclick = () => {
 }
 
 grises.onclick = () => {
+
+    DH_Deslizadores();
+
     if (inv){
         return;
     }
@@ -216,6 +221,9 @@ grises.onclick = () => {
 
 //boton espejo
 espejo.onclick =() => {
+
+    DH_Deslizadores();
+
     if (inv){
         return;
     }    
@@ -228,6 +236,9 @@ espejo.onclick =() => {
 
 /* boton negativo */
 negativo.onclick = () =>{
+
+    DH_Deslizadores();
+
     if (inv){
         return;
     }
@@ -250,6 +261,9 @@ negativo.onclick = () =>{
 
 /* boton vintage */
 vintage.onclick = () => {
+
+    DH_Deslizadores();
+
     if (inv){
         return;
     }
@@ -274,11 +288,26 @@ vintage.onclick = () => {
 
 /* Retrollamada del Boton de Invertir */
 invertir.onclick = () =>{
+
+    DH_Deslizadores();
+
     sg = false;
     ctx.drawImage(img, 0, 0, img.width, img.height);
     ctx.translate(0,img.height);
     ctx.scale(1,-1);
     ctx.drawImage(img, 0, 0, img.width, img.height);
+}
+
+function H_Deslizadores() {
+    rojo.disabled = false;
+    verde.disabled = false;
+    azul.disabled = false;
+}
+
+function DH_Deslizadores() {
+    rojo.disabled = true;
+    verde.disabled = true;
+    azul.disabled = true;
 }
 
 console.log("Fin...");
