@@ -23,7 +23,7 @@ const ESTADOS = {
     RUNNING_3: 3,
     ON: 4,
     OFF: 5 
-}
+};
 
 let estadoActual = ESTADOS.OFF;
 
@@ -55,7 +55,7 @@ camara1.onclick = () => {
     video1.currentTime = video2.currentTime;
     video1.play();
     estadoActual = ESTADOS.RUNNING_1;
-}
+};
 
 camara2.onclick = () => {
     console.log(estadoActual);
@@ -68,7 +68,7 @@ camara2.onclick = () => {
     video1.currentTime = video3.currentTime;
     video1.play();
     estadoActual = ESTADOS.RUNNING_2;
-}
+};
 
 camara3.onclick = () => {
     console.log(estadoActual);
@@ -81,9 +81,86 @@ camara3.onclick = () => {
     video1.currentTime = video4.currentTime;
     video1.play();
     estadoActual = ESTADOS.RUNNING_3;
-}
+};
 
 btn_src_on.onclick = () => {
+    console.log(estadoActual);
+
+    if (estadoActual != ESTADOS.OFF && estadoActual != ESTADOS.TEST){
+        return;
+    }
+    
+    video2.src = "https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4"
+    video2.currentTime = 0;
+    video2.play();
+    video2.muted = true;
+
+    video3.src = "https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente2.mp4"
+    video3.currentTime = 0;
+    video3.play();
+    video3.muted = true;
+
+    video4.src = "https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente3.mp4"
+    video4.currentTime = 0;
+    video4.play();
+    video4.muted = true;
+
+    video1.poster = poster;
+    estadoActual = ESTADOS.ON; 
+};
+
+btn_src_off.onclick = () => {
+    console.log(estadoActual);
+
+    if (estadoActual == ESTADOS.OFF){
+        return;
+    }
+
+    video1.poster = poster;
+    video1.src = "";
+    
+    video2.poster = poster;
+    video2.src = "";
+    
+    video3.poster = poster;
+    video3.src = "";
+    
+    video4.poster = poster;
+    video4.src = "";
+
+    estadoActual = ESTADOS.OFF;
+};
+
+btn_src_test.onclick = () => {
+    console.log(estadoActual);
+
+    if (estadoActual == ESTADOS.TEST){
+        return;
+    }
+
+    video1.poster = poster;
+    video1.src = "";
+    
+    video2.poster = poster;
+    video2.src = "";
+    
+    video3.poster = poster;
+    video3.src = "";
+    
+    video4.poster = poster;
+    video4.src = "";
+    
+    estadoActual = ESTADOS.TEST;
+};
+
+/* 
+
+Intento de mejora frustrado. He intentado poner videos propios, pero a la hora de renderizarlos me daba problemas.
+    Los videos estan subidos en un repositorio de GitHub a parte par cumplir la especificación del tema de la descarga, 
+    pero a la hora de que el servidor Web intenta cargarlos no los reproduce.
+    Adjunto codigo de los programado para su visualizacion:
+    
+    btn_src_on.onclick = () => {
     console.log(estadoActual);
 
     if (estadoActual != ESTADOS.OFF && estadoActual != ESTADOS.TEST){
@@ -107,48 +184,5 @@ btn_src_on.onclick = () => {
 
     video1.poster = poster;
     estadoActual = ESTADOS.ON; 
-}
-
-btn_src_off.onclick = () => {
-    console.log(estadoActual);
-
-    if (estadoActual == ESTADOS.OFF){
-        return;
-    }
-
-    video1.poster = poster;
-    video1.src = "";
-    
-    video2.poster = poster;
-    video2.src = "";
-    
-    video3.poster = poster;
-    video3.src = "";
-    
-    video4.poster = poster;
-    video4.src = "";
-
-    estadoActual = ESTADOS.OFF;
-}
-
-btn_src_test.onclick = () => {
-    console.log(estadoActual);
-
-    if (estadoActual == ESTADOS.TEST){
-        return;
-    }
-
-    video1.poster = poster;
-    video1.src = "";
-    
-    video2.poster = poster;
-    video2.src = "";
-    
-    video3.poster = poster;
-    video3.src = "";
-    
-    video4.poster = poster;
-    video4.src = "";
-    
-    estadoActual = ESTADOS.TEST;
-}
+};
+*/

@@ -2,36 +2,70 @@ body{
     background-color: gray;
 }
 
-#logo{
-    border: 3px solid white; 
-    margin: 2.5%;
-    padding: 2.5%;
-    color: white;
-    position: static;
-    width: 20%;
-    float: left;
-}
-
-#tiempo{
-    float: right;
-    width: 27.5%;
-    margin-top: 25%;
+#titulo{
     text-align: center;
-    font-size: 200%;
-    font-family: Cambria;
+    color: black;
+    margin-left: 80px;
+    margin-right: 170px;
+    padding: 5px;
+    font-size: 40px;
 }
 
-#video1, #video2, #video3, #video4{
-    margin-left: 27.5%;
-    margin-right: 27.5%;
-    text-align: center;
+#video1{
+    margin-left: 450px;
 }
 
-#btn_src_on, #btn_src_test ,#btn_src_off, #camara1, #camara2, #camara3{
-    font-size: 250%;
-    margin: 5%;
-    padding: 2.5%;
-    border-radius: 150px;
-    background-color: transparent;
-    border: none;
+#video2{
+    margin-left: 350px;
+}
+
+#camara1{
+    margin-left: 410px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid black;
+    font-size: 80%;
+}
+
+#camara2{
+    margin-left: 120px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid black;
+    font-size: 80%;
+}
+
+#camara3{
+    margin-left: 120px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid black;
+    font-size: 80%;
+}
+
+#btn_src_on{
+    margin-left: 385px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid black;
+    font-size: 80%;
+}
+#btn_src_off{
+    margin-left: 82px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid black;
+    font-size: 80%;
+}
+#btn_src_test{
+    margin-left: 120px;
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid black;
+    font-size: 80%;
 }
