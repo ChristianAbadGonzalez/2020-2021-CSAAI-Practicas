@@ -47,23 +47,25 @@ body{
 }
 
 #btn_src_on{
-    margin-left: 385px;
+    margin-left: 420px;
     margin-top: 10px;
     border-radius: 10px;
     background-color: white;
     border: 3px solid black;
     font-size: 80%;
 }
+
 #btn_src_off{
-    margin-left: 82px;
+    margin-left: 130px;
     margin-top: 10px;
     border-radius: 10px;
     background-color: white;
     border: 3px solid black;
     font-size: 80%;
 }
+
 #btn_src_test{
-    margin-left: 120px;
+    margin-left: 140px;
     border-radius: 10px;
     background-color: white;
     border: 3px solid black;
